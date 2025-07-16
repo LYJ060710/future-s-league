@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://showcases.yalco.kr/html-css/01-06/table.css">
+  <title>Document</title>
+</head>
+<body>
+  <p>
+    table tag is for making table. <br>
+    <table>
+      <caption>Number 1 to 9</caption>
+      <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+      </tr>
+    </table> <br>
+  <hr> <br>
+    thead, tbody, tfoot tag is for the visibility of the table. <br>
+    <table>
+      <caption>Web Delvopment Study Record</caption>
+      <thead>
+        <tr>
+          <th scope="col">Subject</th>
+          <th scope="col">Mon</th>
+          <th scope="col">Tue</th>
+          <th scope="col">Wed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">HTML</th>
+          <td>60min</td>
+          <td>60min</td>
+          <td>0min</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th scope="row">CSS</th>
+          <td>0min</td>
+          <td>30min</td>
+          <td>60min</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <th scope="row">JS</th>
+          <td>0min</td>
+          <td>0min</td>
+          <td>60min</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th scope="row">Total</th>
+          <td>60min</td>
+          <td>90min</td>
+          <td>120min</td>
+        </tr>
+      </tfoot>
+    </table> <br>
+  <hr> <br>
+    colspan tag is for merging columns. <br>
+    rowspan tag is for merging rows. <br>
+    <table>
+      <tr>
+        <td>1</td>
+        <td colspan="2">2</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td rowspan="3">3</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td colspan="2" rowspan="2">4</td>
+      </tr>
+      <tr>
+        <td>1</td>
+      </tr>
+    </table> <br>
+  <hr> <br>
+    colgroup tag is for grouping columns in a table and imposing properties on them. <br>
+    col tag is for grouping the columns of a table.
+    <table>
+      <caption>2025 July Calendar</caption>
+      <colgroup>
+        <col class="weekend">
+        <col span="5">
+        <col class="weekend">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Sun</th>
+          <th scope="col">Mon</th>
+          <th scope="col">Tue</th>
+          <th scope="col">Wed</th>
+          <th scope="col">Thu</th>
+          <th scope="col">Fri</th>
+          <th scope="col">Sat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>_</td>
+          <td>_</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td>16</td>
+          <td>17</td>
+          <td>18</td>
+          <td>19</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+          <td>24</td>
+          <td>25</td>
+          <td>26</td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td>30</td>
+          <td>31</td>
+          <td>_</td>
+          <td>_</td>
+        </tr>
+      </tbody>
+    </table>  
+  </p>  
+</body>
+</html>
