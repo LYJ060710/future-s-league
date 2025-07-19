@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    textarea tag is for making text box. <br> <br>
+    <label for="message">Enter your message.</label> <br>
+  <textarea id="message" cols="64" rows="5"></textarea>
+  <hr>
+  select, option, optgroup, datalist tags are using option. <br><br>
+  <label for="lang">language</label> <br>
+  <select id="lang">
+    <option value="">-- language select --</option>
+    <option value="html">HTML</option>
+    <option value="css">CSS</option>
+    <option value="js">JS</option>
+    <option value="ts">TS</option>
+  </select> <br><br>
+
+  <label for="shopping">shopping list</label> <br>
+  <select id="shopping">
+    <optgroup label="fruit">
+      <option value="f_apl">apple</option>
+      <option value="f_grp">grape</option>
+      <option value="f_org">orange</option>
+    </optgroup>
+    <optgroup label="vegetable">
+      <option value="v_crt">carrot</option>
+      <option value="v_tmt">tomato</option>
+      <option value="v_ept">eggplant</option>
+    </optgroup>
+    <optgroup label="meat">
+      <option value="m_bef">beef</option>
+      <option value="m_prk">pork</option>
+      <option value="m_ckn">chicken</option>
+    </optgroup>
+  </select> <br><br>
+
+    <label for="job">jobs</label> <br>
+  <input id="job" list="jobs">
+  <datalist id="jobs">
+    <option value="student">
+    <option value="designer">
+    <option value="publisher">
+    <option value="developer">
+  </datalist>
+  <hr>
+  progress, meter tags are for showing degree. <br> <br>
+
+  <progress 
+    id="progressBar" 
+    max="100">
+    0%
+  </progress>
+  <button id="prgStartBtn" type="button">start</button>
+  <br><br>
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="50" value="20">
+    20달러
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="50" value="50">
+    50dollars
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="50" value="80">
+    80dollars
+  </meter>
+
+  <br>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="10" value="20">
+    20dollars
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="10" value="50">
+    50dollars
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="10" value="80">
+    80dollars
+  </meter>
+
+  <br>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="90" value="20">
+    20dollars
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="90" value="50">
+    50dollars
+  </meter>
+
+  <meter 
+    min="0" max="100"
+    low="33" high="67"
+    optimum="90" value="80">
+    80dollars
+  </meter>
+</body>
+</html>
