@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="Section2-1.css">
+  <style>
+    .style-1{color: olivedrab;}
+  </style>
+</head>
+<body>
+  <p>
+    <p>
+      <b style="color: tomato;">
+        inline style
+      </b> <br>
+      This method is to insert CSS code into the style attribute for each HTML tag. <br> 
+      <!--It is not used except in special cases because it is not possible to reuse common properties for multiple elements and HTML code and CSS code are not separated.-->
+    </p>
+    <p>
+      <b class="style-1">
+        internal style sheet
+      </b> <br>
+      This method is to place the style tag inside the head tag and write CSS code inside it. <br>
+      <!--This can be useful when the total amount of HTML and CSS code is not large and the CSS is only applied to the HTML document in question.-->
+    </p>
+    <p>
+      <b class="style-2">
+        linking style sheet
+      </b> This method is to link an external CSS file to your HTML document. <br>
+      <!--This is the most widely used method because the HTML and CSS codes are separated and the CSS code can be used in common across multiple HTML files.-->
+    </p>
+  </p>
+<hr>
+  <p>
+    <span>
+      span element
+    </span>
+
+    <p>
+      p element
+    </p>
+
+    <p class="blue">
+      p element, class is blue
+    </p>
+
+    <span class="blue">
+      span element, class is blue
+    </span>
+
+    <p class="blue dark">
+      p element, class is blue and dark
+    </p>
+
+    <p class="blue" id="red">
+      p element, class is blue, id is red
+    </p>
+<hr>
+    <p>
+      <ul class="outer">
+        <li>meat</li>
+        <li>veggie</li>
+        <li>dairy</li>
+        <li>fruit
+          <ul>
+            <li>apple</li>
+            <li>grape</li>
+            <li>strawberry</li>
+            <li>kiwi</li>
+          </ul>
+        </li>
+      </ul>
+
+      <ol>
+        <li>one</li>
+        <li>two</li>
+        <li class="starter">three</li>
+        <li>four</li>
+        <li>five</li>
+        <li>six</li>
+        <li>seven</li>
+        <li>eight</li>
+        <li>nine</li>
+      </ol>
+    </p>
+  </p>
+</body>
+</html>
