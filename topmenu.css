@@ -1,0 +1,45 @@
+body {
+    margin: 0; /* body의 기본 마진 제거 */
+    padding: 0; /* body의 기본 패딩 제거 */
+    font-family: Arial, sans-serif; /* 폰트 설정 (선택 사항) */
+
+    background-image: url('https://i.ibb.co/7x9kKZMD/image.png'); /* 여기에 실제 이미지 경로를 입력하세요 */
+    background-size: 40rem; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* 스크롤 시 배경 이미지를 고정 (Parallax 효과) */
+
+}
+
+nav {
+  background-color: #fff;
+  color: black;
+  padding: 0.5rem;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+nav .yuimg {
+  height: 3rem;
+  margin: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 50px;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+}
