@@ -1,31 +1,31 @@
 body {
-    margin: 0; /* body의 기본 마진 제거 */
-    padding: 0; /* body의 기본 패딩 제거 */
-    font-family: Arial, sans-serif; /* 폰트 설정 (선택 사항) */
-
-    background-image: url('https://i.ibb.co/7x9kKZMD/image.png'); /* 여기에 실제 이미지 경로를 입력하세요 */
-    background-size: 40rem; 
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* 스크롤 시 배경 이미지를 고정 (Parallax 효과) */
-
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('https://i.ibb.co/7x9kKZMD/image.png');
+  background-size: 30%; /* 화면 꽉 채우기 */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333;
 }
 
 nav {
   background-color: #fff;
   color: black;
-  padding: 0.5rem;
+  padding: 10px 20px;
   position: fixed;
-  top: 0%;
+  top: 0;
   width: 100%;
   display: flex;
   align-items: center;
   z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav .yuimg {
   height: 3rem;
-  margin: 20px;
+  margin-right: 30px;
 }
 
 nav ul {
@@ -36,10 +36,40 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 50px;
+  margin-left: 40px;
 }
 
 nav ul li a {
   color: black;
   text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  display: flex;
+  gap: 50px;
+  padding: 120px 50px 50px 50px; /* nav 아래 패딩 */
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+
+/* 반응형 */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 120px 20px 20px 20px;
+  }
+  
+  .left-column,
+  .right-column {
+    min-width: 100%;
+  }
+  nav ul li {
+    margin-left: 15px;
+  }
+  nav {
+    padding: 10px 15px;
+  }
 }
