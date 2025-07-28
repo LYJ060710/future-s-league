@@ -1,0 +1,35 @@
+/* font style & weight */
+
+p {
+  /* normal, italic, oblique */
+  font-style: normal;
+
+  /* normal, bold, 100~900 */
+  font-weight: normal;
+}
+
+/* font size */
+html { font-size: 16px; }
+div { font-size: 0.8em; }
+
+/* text decoration */
+p {
+  text-decoration: none;
+
+  /* capitalize, uppercase, lowercase */
+  text-transform: none;
+}
+
+/* You can make it by text-shadow too. */
+span {
+  text-shadow:
+    /* inner white shadow */
+    1px 0 white, -1px 0 white, 0 1px white, 0 -1px white, 
+    1px 1px white, 1px -1px white, -1px 1px white, -1px -1px white,
+
+    /* outer plum shadow */
+    2px 0 plum, -2px 0 plum, 0 2px plum, 0 -2px plum,
+    2px 1px plum, -2px 1px plum, 1px 2px plum, 1px -2px plum,
+    2px -1px plum, -2px -1px plum, -1px 2px plum, -1px -2px plum,
+    2px 2px plum, 2px -2px plum, -2px 2px plum, -2px -2px plum;
+}
