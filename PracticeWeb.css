@@ -1,0 +1,173 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url('https://i.ibb.co/7x9kKZMD/image.png');
+  background-size: 30%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333;
+}
+
+nav {
+  background-color: #fff;
+  color: black;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+nav .yuimg {
+  height: 3rem;
+  margin-right: 30px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-left: 40px;
+}
+
+nav ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  display: flex;
+  gap: 50px;
+  padding: 120px 50px 50px 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 120px 20px 20px 20px;
+  }
+  
+  .left-column,
+  .right-column {
+    min-width: 100%;
+  }
+  nav ul li {
+    margin-left: 15px;
+  }
+  nav {
+    padding: 10px 15px;
+  }
+}
+
+.profile {
+    position: relative; 
+    width: 100%; 
+    height: 400px; 
+}
+
+.profile img {
+    max-width: 200px; 
+    width: 30vw; 
+    height: auto; 
+
+    border: 0.5em dashed #ffd700;
+
+    position: absolute; 
+    top: 70%; 
+    left: 20%; 
+    transform: translate(-50%, -50%); 
+}
+
+@media (max-width: 768px) {
+    .profile {
+        height: 300px; 
+    }
+
+    .profile img {
+        width: 40vw; 
+        max-width: 150px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .profile {
+        height: 200px; 
+    }
+    .profile img {
+        width: 50vw; 
+        max-width: 100px; 
+    }
+}
+
+.info-list {
+  display: inline-block;
+  position: relative; 
+  width: 100%; 
+  height: 400px; 
+  overflow: hidden; 
+}
+
+.info-list {    
+  max-width: 200px; 
+  width: 30vw; 
+  height: auto; 
+
+  position: absolute; 
+  top: 70%; 
+  left: 20%; 
+  transform: translate(-50%, -50%); 
+}
+
+dt {font-weight: bold ;}
+
+.lan-list {
+  display: inline-block;
+  width: 100%; 
+  height: 400px; 
+  overflow: hidden; 
+}
+
+.lan-list {    
+  max-width: 200px; 
+  width: 30vw; 
+  height: auto; 
+
+  position: absolute; 
+  top:  30%; 
+  right: 1%; 
+  transform: translate(-50%, -50%); 
+}
+
+dd img{
+  width: 30%;
+  height: 30%;
+}
+
+meter {
+  width: 200px;
+  padding-left: 40px;
+}
+
+.link-list {    
+  width: 50vw; 
+  height: auto; 
+
+  position: absolute; 
+  top:  65%; 
+  left: 98.5%; 
+  transform: translate(-50%, -50%); 
+}
