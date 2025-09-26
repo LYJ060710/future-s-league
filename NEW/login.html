@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+
+  <h2>로그인</h2>
+  <form id="loginForm">
+    <div class="mb-3">
+      <label>학번</label>
+      <input type="text" id="loginStudentId" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>비밀번호</label>
+      <input type="password" id="loginPassword" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">로그인</button>
+  </form>
+
+  <p class="mt-3">계정이 없으신가요? <a href="signup.html">회원가입</a></p>
+
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTKf-9U6yL8gNhvUCG2eMB5iF4Xc8GPtc",
+      authDomain: "project-2ec77.firebaseapp.com",
+      projectId: "project-2ec77",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById("loginForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const studentId = document.getElementById("loginStudentId").value;
+      const password = document.getElementById("loginPassword").value;
+      const emailAsId = `${studentId}@school.com`;
+
+      auth.signInWithEmailAndPassword(emailAsId, password)
+        .then(() => {
+          alert("로그인 성공!");
+          window.location.href = "index.html";
+        })
+        .catch(err => alert("로그인 실패: " + err.message));
+    });
+  </script>
+</body>
+</html>

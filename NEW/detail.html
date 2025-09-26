@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>상품 상세</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
+  <style>
+    body { background-color: #f8f9fa; }
+    .product-card { border-radius: 12px; overflow: hidden; }
+    .product-image { object-fit: cover; height: 100%; width: 100%; }
+    .price-tag { font-size: 1.5rem; font-weight: bold; color: #d63384; }
+    .desc-box { background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #eee; }
+    .seller-info { font-size: 0.9rem; color: #555; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="card shadow product-card">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <img id="image" class="img-fluid product-image" alt="상품 이미지" />
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h2 id="title" class="fw-bold mb-3"></h2>
+            <h4 id="price" class="price-tag mb-3"></h4>
+            <p id="date" class="text-muted mb-1"></p>
+            <hr>
+            <div class="desc-box mb-4">
+              <p id="desc" class="mb-0"></p>
+            </div>
+            <p id="sellerInfo" class="seller-info"></p>
+            <div class="d-flex gap-2">
+              <a href="index.html" class="btn btn-outline-secondary">← 목록으로</a>
+              <button id="chatBtn" class="btn btn-success">💬 판매자와 1:1 대화하기</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTKf-9U6yL8gNhvUCG2eMB5iF4Xc8GPtc",
+      authDomain: "project-2ec77.firebaseapp.com",
+      projectId: "project-2ec77",
+      storageBucket: "project-2ec77.firebasestorage.app",
+      messagingSenderId: "473929963915",
+      appId: "1:473929963915:web:f05fed9103155df089778e",
+      measurementId: "G-WFW07K42RQ"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    let sellerUid = null;
+
+    function maskStudentId(id) {
+      if (!id) return "익명";
+      if (id.length <= 4) return "****";
+      return id.slice(0, id.length - 4) + "****";
+    }
+
+    if (!id) {
+      document.querySelector('.container').innerHTML = "<p>잘못된 접근입니다.</p>";
+    } else {
+      db.collection('product').doc(id).get().then(async (doc) => {
+        if (!doc.exists) {
+          document.querySelector('.container').innerHTML = "<p>상품을 찾을 수 없습니다.</p>";
+          return;
+        }
+
+        const data = doc.data();
+        document.querySelector('#title').innerText = data.제목 || '제목 없음';
+        document.querySelector('#price').innerText = !isNaN(data.가격)
+          ? Number(data.가격).toLocaleString('ko-KR') + " 원"
+          : "가격 없음";
+        document.querySelector('#date').innerText = data.날짜
+          ? data.날짜.toDate().toLocaleDateString('ko-KR')
+          : '';
+        document.querySelector('#desc').innerText = data.내용 || '설명이 없습니다.';
+        document.querySelector('#image').src = data.image || "https://picsum.photos/600";
+
+        sellerUid = data.작성자UID || null;
+
+        if (sellerUid) {
+          const sellerDoc = await db.collection("users").doc(sellerUid).get();
+          if (sellerDoc.exists) {
+            const sellerStudentId = sellerDoc.data().studentId;
+            document.querySelector('#sellerInfo').innerText = "판매자 학번: " + maskStudentId(sellerStudentId);
+          }
+        }
+      }).catch((error) => {
+        console.error("Firestore 에러:", error);
+        document.querySelector('.container').innerHTML = "<p>데이터를 불러오는 중 오류가 발생했습니다.</p>";
+      });
+    }
+
+    document.getElementById("chatBtn").addEventListener("click", () => {
+      auth.onAuthStateChanged(async (user) => {
+        if (!user) {
+          alert("로그인 후 이용할 수 있습니다.");
+          window.location.href = "login.html";
+          return;
+        }
+        if (!sellerUid) {
+          alert("판매자 정보를 불러올 수 없습니다.");
+          return;
+        }
+        if (user.uid === sellerUid) {
+          alert("자신의 상품에는 대화를 걸 수 없습니다.");
+          return;
+        }
+
+        const chatQuery = await db.collection("chats")
+          .where("participants", "array-contains", user.uid)
+          .get();
+
+        let existingChatId = null;
+
+        chatQuery.forEach(doc => {
+          const data = doc.data();
+          const participants = data.participants || [];
+          if (participants.includes(sellerUid)) {
+            existingChatId = doc.id;
+          }
+        });
+
+        if (existingChatId) {
+          window.location.href = `chat.html?id=${existingChatId}`;
+        } else {
+          const newChatRef = db.collection("chats").doc();
+          await newChatRef.set({
+            participants: [user.uid, sellerUid],
+            createdAt: new Date()
+          });
+          window.location.href = `chat.html?id=${newChatRef.id}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+.product {
+    display: flex;
+    padding: 10px;
+}
+.thumbnail {
+    max-width: 200px;
+    width: 100%;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+}
+.product .price {
+    font-size: 16px;
+    font-weight: 600;
+}
+.product .title {
+    font-size: 17px;
+    font-weight: 600;
+}
+.product .date {
+    color: grey;
+    font-size: 13px;
+}
+/* 📄 main.css */
+
+#recent-searches {
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.recent-item {
+    cursor: pointer;
+}
+
+.recent-item:hover {
+    text-decoration: underline;
+}
+
+.recent-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.close-btn {
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+/* 내비게이션 바의 '무제' 텍스트를 대체하는 로고 이미지 스타일 */
+#logo-img {
+    /* 이미지 높이를 부모 요소(navbar-brand)의 높이에 맞춥니다. */
+    height: 100%;
+    /* 이미지 너비는 자동으로 조정하여 비율을 유지합니다. */
+    width: auto;
+    /* 이미지의 최대 높이/너비를 설정하여 너무 커지지 않도록 합니다. */
+    max-height: 80px; /* 일반적인 navbar-brand 폰트 크기에 맞게 조정 */
+}
+
+/* 부모 요소인 navbar-brand의 높이를 조정하여 로고가 잘리지 않도록 합니다. */
+.navbar-brand {
+    /* 로고 이미지의 높이 기준이 될 수 있도록 설정합니다. */
+    height: auto;
+    /* 기존 텍스트처럼 보이던 높이를 확보합니다 (필요에 따라 조정). */
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+}
+.msg {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+.me { background-color: #DCF8C6; }
+.other { background-color: #E5E5EA; }
