@@ -59,4 +59,5 @@ $('#send').click(async function () {
     } catch (err) {
         console.error("업로드 실패:", err);
     }
+    
 });
