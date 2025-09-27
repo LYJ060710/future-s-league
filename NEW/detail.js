@@ -39,7 +39,7 @@ if (!id) {
             ? data.날짜.toDate().toLocaleDateString('ko-KR')
             : '';
         document.querySelector('#desc').innerText = data.내용 || '설명이 없습니다.';
-        document.querySelector('#image').src = data.publicUrl || "https://picsum.photos/600";
+        document.querySelector('#image').src = data.이미지URL || "https://i.ibb.co/TqckztRV/yum-logo.png";
 
         sellerUid = data.작성자UID || null;
 
