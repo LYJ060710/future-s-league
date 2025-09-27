@@ -14,8 +14,8 @@
 
     auth.signInWithEmailAndPassword(emailAsId, password)
         .then(() => {
-        alert("로그인 성공!");
-    window.location.href = "index.html";
+            alert("로그인 성공!");
+            window.location.href = "index.html";
         })
         .catch(err => alert("로그인 실패: " + err.message));
     });
