@@ -90,3 +90,26 @@
 }
 .me { background-color: #DCF8C6; }
 .other { background-color: #E5E5EA; }
+
+
+.chat-alert { position: relative; }
+    .chat-badge {
+    position: absolute; top: -5px; right: -5px;
+    background: red; color: white; font-size: 0.7rem;
+    padding: 3px 6px; border-radius: 50%;
+    }
+    .thumbnail {
+    width: 150px; min-height: 120px;
+    background-size: cover; background-position: center;
+    border-right: 1px solid #eee;
+    }
+    .product { border-radius: 8px; overflow: hidden; }
+    #recent-searches {
+    position: absolute; top: 110%; left: 0;
+    background: #fff; border: 1px solid #ddd; border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    width: 260px; z-index: 10; padding: 8px;
+    }
+    #recent-searches .item { padding: 6px 8px; border-radius: 4px; cursor: pointer; }
+    #recent-searches .item:hover { background: #f6f6f6; }
+    #recent-searches .header { font-size: 0.85rem; color: #666; margin-bottom: 6px; }
