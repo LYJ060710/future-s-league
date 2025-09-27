@@ -7,6 +7,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+
 document.getElementById("signupForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const studentId = document.getElementById("studentId").value;

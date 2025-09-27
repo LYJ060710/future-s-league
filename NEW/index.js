@@ -128,7 +128,7 @@ function 상품렌더링(상품목록) {
         //사진을 여기 아래에 넣음 data.image 쪽에 여기에 supabase를 이용하여 사진을 넣으면 됨.
         const 템플릿 = `
     <div class="product d-flex border mb-3 bg-white">
-        <div class="thumbnail" style="background-image: url('${data.image || " https://picsum.photos/350"}');"></div>
+        <div class="thumbnail" style="background-image: url('${data.이미지URL || "https://i.ibb.co/TqckztRV/yum-logo.png"}');"></div>
             <div class="flex-grow-1 p-3"> 
         <h5 class="title mb-1">
             <a href="detail.html?id=${data.id}" class="text-decoration-none">${data.제목}</a>

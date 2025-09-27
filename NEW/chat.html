@@ -8,6 +8,7 @@
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
+  <link rel="stylesheet" href="chat.css">
 
 </head>
 <body class="container py-4">
@@ -16,7 +17,7 @@
   <div id="chat-box"></div>
 
   <form id="chat-form" class="d-flex mt-3">
-    <input type="text" id="messageInput" class="form-control me-2" placeholder="메시지를 입력하세요..." required>
+    <input type="text" id="messageInput" autocomplete="off" class="form-control me-2" placeholder="메시지를 입력하세요..." required>
     <button type="submit" class="btn btn-primary">전송</button>
   </form>
 
