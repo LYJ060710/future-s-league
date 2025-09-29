@@ -13,7 +13,7 @@ document.getElementById("signupForm").addEventListener("submit", (e) => {
     const studentId = document.getElementById("studentId").value;
     const name = document.getElementById("name").value;
     const password = document.getElementById("signupPassword").value;
-    const emailAsId = `${studentId}@school.com`;
+    const emailAsId = `${studentId}@yu.ac.kr`;
 
     auth.createUserWithEmailAndPassword(emailAsId, password)
         .then(cred => {
