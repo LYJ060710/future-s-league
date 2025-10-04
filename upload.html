@@ -10,8 +10,10 @@
 <body>
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">무제</a>
+      <div class="container-fluid" >
+        <a class="navbar-brand" href="index.html">
+          <img src="https://i.ibb.co/zW83DcmN/Kakao-Talk-20250925-164401530.png" alt="천마마켓 로고" id="logo-img">
+        </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
@@ -20,8 +22,18 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link logo-text" href="index.html">천마마켓</a></li>
         </ul>
+
+        <div class="d-flex align-items-center">
+          <!-- 로그인/업로드 영역 -->
+          <div id="auth-area"></div>
+
+          <!-- 채팅 알림 버튼 -->
+          <div id="chat-area" class="ms-3"></div>
+
+          
+        </div>
       </div>
     </div>
   </nav>

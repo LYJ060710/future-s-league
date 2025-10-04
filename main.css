@@ -9,7 +9,7 @@
   border-radius: 12px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
   cursor: pointer;
   text-decoration: none;
@@ -19,16 +19,21 @@
 .product:hover {
   transform: translateY(-6px);
   border: 2px solid #007bff;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 /* 썸네일 이미지 */
 .thumbnail {
-  width: 100%;              /* 카드 너비에 맞게 */
-  height: 200px;            /* 원하는 높이 고정 */
-  background-size: cover;   /* 비율 유지하면서 꽉 채우기 */
-  background-position: center; /* 가운데 정렬 */
-  border-radius: 8px;       /* 모서리 둥글게 (선택) */
+  width: 100%;
+  /* 카드 너비에 맞게 */
+  height: 200px;
+  /* 원하는 높이 고정 */
+  background-size: cover;
+  /* 비율 유지하면서 꽉 채우기 */
+  background-position: center;
+  /* 가운데 정렬 */
+  border-radius: 8px;
+  /* 모서리 둥글게 (선택) */
 }
 
 /* 상품 정보 */
@@ -62,7 +67,8 @@
 /* 그리드 컨테이너 */
 #product-grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개 */
+  grid-template-columns: repeat(4, 1fr);
+  /* 한 줄에 4개 */
   gap: 20px;
   padding: 20px;
   justify-content: center;
@@ -70,17 +76,25 @@
 
 /* 반응형 대응 */
 @media (max-width: 1200px) {
-  #product-grid-container { grid-template-columns: repeat(3, 1fr); }
+  #product-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
+
 @media (max-width: 900px) {
-  #product-grid-container { grid-template-columns: repeat(2, 1fr); }
+  #product-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
+
 @media (max-width: 600px) {
-  #product-grid-container { grid-template-columns: 1fr; }
+  #product-grid-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ===========================
-   최근 검색어
+  최근 검색어
 =========================== */
 #recent-searches {
   max-height: 200px;
@@ -93,18 +107,21 @@
   background-color: white;
   border: 1px solid #ddd;
   border-radius: 6px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   padding: 8px;
   display: none;
 }
+
 #recent-searches .item {
   padding: 6px 8px;
   border-radius: 4px;
   cursor: pointer;
 }
+
 #recent-searches .item:hover {
   background: #f6f6f6;
 }
+
 #recent-searches .header {
   font-size: 0.85rem;
   color: #666;
@@ -113,23 +130,30 @@
 }
 
 /* ===========================
-   네비게이션 & 로고
+  네비게이션 & 로고
 =========================== */
 #logo-img {
   height: 100%;
   width: auto;
   max-height: 70px;
 }
+
 .navbar-brand {
   height: auto;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
+
+
+
 /* ===========================
-   채팅 알림
+  채팅 알림
 =========================== */
-.chat-alert { position: relative; }
+.chat-alert {
+  position: relative;
+}
+
 .chat-badge {
   position: absolute;
   top: -5px;
@@ -142,7 +166,7 @@
 }
 
 /* ===========================
-   채팅 메시지
+  채팅 메시지
 =========================== */
 .msg {
   max-width: 70%;
@@ -151,13 +175,20 @@
   margin-bottom: 10px;
   word-wrap: break-word;
 }
-.me { background-color: #DCF8C6; }
-.other { background-color: #E5E5EA; }
+
+.me {
+  background-color: #DCF8C6;
+}
+
+.other {
+  background-color: #E5E5EA;
+}
 
 /* ===========================
-   버튼 스타일
+버튼 스타일
 =========================== */
-button, .btn {
+button,
+.btn {
   background: linear-gradient(135deg, #007bff, #00c6ff);
   color: white;
   border: none;
@@ -166,75 +197,77 @@ button, .btn {
   font-weight: 600;
   transition: background 0.3s ease, transform 0.2s ease;
 }
-button:hover, .btn:hover {
+
+button:hover,
+.btn:hover {
   background: linear-gradient(135deg, #0056b3, #0099cc);
   transform: translateY(-2px);
 }
 
 /* ===========================
-   폰트
+폰트
 =========================== */
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
-    font-weight: 100;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-1Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
-    font-weight: 200;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-2ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-3Light.woff2') format('woff2');
+  font-weight: 300;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
-    font-weight: 400;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
-    font-weight: 500;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-5Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
-    font-weight: 600;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-6SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
-    font-weight: 800;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-8ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Paperozi';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
-    font-weight: 900;
-    font-display: swap;
+  font-family: 'Paperozi';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-9Black.woff2') format('woff2');
+  font-weight: 900;
+  font-display: swap;
 }
 
 body {
@@ -252,5 +285,5 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 0.5px rgba(0,0,0,0.1);
+  text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.1);
 }
