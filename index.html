@@ -6,7 +6,6 @@
   <title>홈</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
-
 </head>
 <body>
 
@@ -22,30 +21,29 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- 왼쪽 메뉴 -->
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link logo-text" href="index.html">천마마켓</a></li>
         </ul>
 
-        <div class="d-flex align-items-center">
-          <!-- 로그인/업로드 영역 -->
+        <!-- 가운데: 검색창 (왼쪽으로 조금 이동) -->
+        <form id="searchForm" class="d-flex position-relative me-auto" role="search" style="max-width: 500px; width: 100%;">
+          <input id="searchInput" class="form-control me-2" type="search" placeholder="상품 제목, 내용, 카테고리 검색" aria-label="Search" />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          <div id="recent-searches" class="d-none"></div>
+        </form>
+
+        <!-- 오른쪽: 로그인/업로드 + 채팅 -->
+        <div class="d-flex align-items-center ms-3">
           <div id="auth-area"></div>
-
-          <!-- 채팅 알림 버튼 -->
           <div id="chat-area" class="ms-3"></div>
-
-          <!-- 검색 폼 -->
-          <form id="searchForm" class="d-flex position-relative ms-3" role="search">
-            <input id="searchInput" class="form-control me-2" type="search" placeholder="상품 제목, 내용, 카테고리 검색" aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">Search</button>
-            <div id="recent-searches" class="d-none"></div>
-          </form>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- 상품 목록 컨테이너 (네비용 컨테이너와 분리) -->
-  <div id="product-list" class="container mt-3">
+  <!-- 상품 목록 컨테이너 -->
+  <div id="product-grid-container" class="container mt-3">
     <!-- Firestore에서 불러온 상품들이 여기에 append 됩니다 -->
   </div>
 
@@ -53,7 +51,6 @@
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-storage-compat.js"></script>
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

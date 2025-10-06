@@ -45,11 +45,7 @@ auth.onAuthStateChanged((user) => {
     </div>
     `;
         document.getElementById("logoutBtn").addEventListener("click", () => {
-            auth.signOut().then(() => {
-                window.location.href = "index.html";
-            }).cath((error) => {
-                console.error("로그아웃 에러!", error);
-            });
+            auth.signOut();
         });
 
         // 채팅 알림 버튼
@@ -115,7 +111,7 @@ auth.onAuthStateChanged((user) => {
 
 // 상품 렌더링 함수
 function 상품렌더링(상품목록) {
-    const root = document.getElementById('product-list');
+    const root = document.getElementById('product-grid-container');
     root.innerHTML = '';
     상품목록.forEach((data) => {
         let formattedDate = '날짜 없음';
@@ -129,24 +125,29 @@ function 상품렌더링(상품목록) {
             formattedPrice = Number(data.가격).toLocaleString('ko-KR') + '원';
         }
 
-        //사진을 여기 아래에 넣음 data.image 쪽에 여기에 supabase를 이용하여 사진을 넣으면 됨.
         const 템플릿 = `
-    <div class="product d-flex border mb-3 bg-white">
-        <div class="thumbnail" style="background-image: url('${data.이미지URL || "https://i.ibb.co/TqckztRV/yum-logo.png"}');"></div>
+        <div class="product border mb-3 bg-white">
+            <div class="thumbnail" style="background-image: url('${data.이미지URL || "https://i.ibb.co/TqckztRV/yum-logo.png"}');"></div>
             <div class="flex-grow-1 p-3"> 
-        <h5 class="title mb-1">
-            <a href="detail.html?id=${data.id}" class="text-decoration-none">${data.제목}</a>
-        </h5>
-        <p class="text-muted mb-1" style="font-size:0.9rem;">${formattedDate}</p>
-        <p class="price fw-bold mb-1">${formattedPrice}</p>
-        ${data.카테고리 ? `<span class="badge text-bg-light">${data.카테고리}</span>` : ''}
-        <span class="float-end text-muted">♥0</span>
-    </div>
-</div >
-    `;
-        const div = document.createElement('div');
-        div.innerHTML = 템플릿;
-        root.appendChild(div.firstElementChild);
+                <h5 class="title mb-1">${data.제목}</h5>
+                <p class="text-muted mb-1" style="font-size:0.9rem;">${formattedDate}</p>
+                <p class="price fw-bold mb-1">${formattedPrice}</p>
+                ${data.카테고리 ? `<span class="badge text-bg-light">${data.카테고리}</span>` : ''}
+                <span class="float-end text-muted">♥0</span>
+            </div>
+        </div>
+        `;
+
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = 템플릿;
+        const card = wrapper.firstElementChild;
+
+        // ✅ 카드 전체 클릭 시 detail.html로 이동
+        card.addEventListener("click", () => {
+            window.location.href = `detail.html?id=${data.id}`;
+        });
+
+        root.appendChild(card);
     });
 }
 

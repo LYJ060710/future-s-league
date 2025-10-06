@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>회원가입</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="container">
+    <h2>회원가입</h2>
+    <form id="signupForm">
+      <div class="input-group">
+        <label for="studentId">학번</label>
+        <input type="text" id="studentId" required>
+      </div>
+      <div class="input-group">
+        <label for="name">이름</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="input-group">
+        <label for="signupPassword">비밀번호</label>
+        <input type="password" id="signupPassword" required>
+      </div>
+      <div class="input-group">
+        <label for="confirmPassword">비밀번호 확인</label>
+        <input type="password" id="confirmPassword" required>
+      </div>
+      <button type="submit">가입하기</button>
+      <div class="links">
+        <p style="color: blue"><a href="login.html">이미 계정이 있으신가요? 로그인</a></p>
+      </div>
+    </form>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
+
+  <!-- 별도 로직 -->
+  <script src="signup.js"></script>
+</body>
+</html>

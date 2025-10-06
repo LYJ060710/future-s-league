@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +7,33 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
 
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
-        <img src="https://i.ibb.co/zW83DcmN/Kakao-Talk-20250925-164401530.png" alt="천마마켓 로고" id="logo-img">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container-fluid" >
+        <a class="navbar-brand" href="index.html">
+          <img src="https://i.ibb.co/zW83DcmN/Kakao-Talk-20250925-164401530.png" alt="천마마켓 로고" id="logo-img">
+        </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link logo-text" href="index.html">천마마켓</a></li>
         </ul>
+
+        <div class="d-flex align-items-center">
+          <!-- 로그인/업로드 영역 -->
+          <div id="auth-area"></div>
+
+          <!-- 채팅 알림 버튼 -->
+          <div id="chat-area" class="ms-3"></div>
+
+          
+        </div>
       </div>
     </div>
   </nav>
@@ -33,10 +42,10 @@
     <input type="text" class="form-control mt-2" id="title" placeholder="제목">
     <textarea class="form-control mt-2" id="content" placeholder="내용"></textarea>
     <input type="text" class="form-control mt-2" id="price" placeholder="가격">
-    <input class="form-control mt-2" type="file" id="product-images">
+    <input class="form-control mt-2" type="file" id="imageInput">
 
     <!-- 🔹 로그인한 사용자의 학번 표시 (readonly) -->
-    <input type="text" class="form-control mt-2" id="studentId" placeholder="학번" readonly />
+    <input type="text" class="form-control mt-2" id="studentId" placeholder="학번" readonly>
 
     <button class="btn btn-danger mt-3" id="send">올리기</button>
   </div>
@@ -45,7 +54,6 @@
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/12.2.1/firebase-storage-compat.js"></script>
 
   <!-- Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -53,10 +61,6 @@
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-  <!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <!-- JS 파일 연결 -->
-  <script src="upload.js"></script>
+    <script src="upload.js"></script>
 </body>
-
 </html>
