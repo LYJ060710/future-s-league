@@ -1,0 +1,27 @@
+body {
+    background-color: #f5f5f5;
+}
+
+#chat-box {
+    height: 500px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.msg {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.me {
+    background-color: #DCF8C6;
+}
+
+.other {
+    background-color: #E5E5EA;
+}
