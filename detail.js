@@ -52,7 +52,11 @@ auth.onAuthStateChanged((user) => {
     </div>
     `;
         document.getElementById("logoutBtn").addEventListener("click", () => {
-            auth.signOut();
+            auth.signOut().then(() => {
+                window.location.href = "index.html";
+            }).catch((error) => {
+                console.error("로그아웃 에러", error);
+            });
         });
 
         // 채팅 알림 버튼

@@ -38,14 +38,16 @@ auth.onAuthStateChanged((user) => {
             내 정보
         </button>
         <ul class="dropdown-menu">
-            <li><span class="dropdown-item-text">이메일: ${user.email}</span></li>
-            <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" id="logoutBtn">로그아웃</a></li>
         </ul>
     </div>
     `;
         document.getElementById("logoutBtn").addEventListener("click", () => {
-            auth.signOut();
+            auth.signOut().then(() => {
+                window.location.href = "index.html";
+            }).catch((error) => {
+                console.error("로그아웃 에러", error);
+            })
         });
 
         // 채팅 알림 버튼
