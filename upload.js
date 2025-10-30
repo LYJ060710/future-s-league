@@ -1,4 +1,3 @@
-// Firebase 설정
 const firebaseConfig = {
     apiKey: "AIzaSyBTKf-9U6yL8gNhvUCG2eMB5iF4Xc8GPtc",
     authDomain: "project-2ec77.firebaseapp.com",
@@ -12,115 +11,22 @@ const firebaseConfig = {
 // Firebase 초기화
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const storage = firebase.storage();
 const auth = firebase.auth();
+
+const supabaseUrl = "https://rzlrhyvjhjhbfqoschnq.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJ6bHJoeXZqaGpoYmZxb3NjaG5xIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg3ODEwODksImV4cCI6MjA3NDM1NzA4OX0.h9nyY6zrmOwNRbua7be5lDcm6J_HzKyKP3M80NAxYzw";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 let currentUser = null;
 let currentStudentId = null;
-
-auth.onAuthStateChanged((user) => {
-    const authArea = document.getElementById("auth-area");
-    const chatArea = document.getElementById("chat-area");
-    const existingUploadBtn = document.querySelector("#upload-btn");
-
-    if (user) {
-        // 업로드 버튼 추가
-        if (!existingUploadBtn) {
-            const btn = document.createElement("a");
-            btn.href = "upload.html";
-            btn.className = "btn btn-primary me-2";
-            btn.id = "upload-btn";
-            btn.textContent = "업로드";
-            authArea.parentNode.insertBefore(btn, authArea);
-        }
-
-        // 내 정보 드롭다운
-        authArea.innerHTML = `
-    <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            내 정보
-        </button>
-        <ul class="dropdown-menu">
-            <li><span class="dropdown-item-text">이메일: ${user.email}</span></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" id="logoutBtn">로그아웃</a></li>
-        </ul>
-    </div>
-    `;
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-            auth.signOut().then(() => {
-                window.location.href = "index.html";
-            }).catch((error) => {
-                console.error("로그아웃 에러", error);
-            });
-        });
-
-        // 채팅 알림 버튼
-        chatArea.innerHTML = `
-    <div class="chat-alert">
-        <button id="chatBtn" class="btn btn-outline-success position-relative">
-            채팅
-            <span id="chatBadge" class="chat-badge d-none">0</span>
-        </button>
-    </div>
-    `;
-
-        document.getElementById("chatBtn").addEventListener("click", () => {
-            firebase.auth().onAuthStateChanged(async (user) => {
-                if (!user) {
-                    alert("로그인 후 이용할 수 있습니다.");
-                    window.location.href = "login.html";
-                    return;
-                }
-
-                const currentUid = user.uid;
-
-                // Firestore에서 사용자와 연결된 채팅방 찾기
-                const chatQuery = await db.collection("chats")
-                    .where("participants", "array-contains", currentUid)
-                    .get();
-
-                if (!chatQuery.empty) {
-                    // 첫 번째 채팅방으로 이동
-                    const chatId = chatQuery.docs[0].id;
-                    window.location.href = `chatlist.html?id=${chatId}`;
-                } else {
-                    alert("현재 연결된 채팅방이 없습니다.");
-                }
-            });
-        });
-
-        // 내가 속한 채팅방 실시간 구독 → unread 뱃지
-        db.collection("chats")
-            .where("participants", "array-contains", user.uid)
-            .onSnapshot((snapshot) => {
-                let unreadCount = 0;
-                snapshot.forEach(doc => {
-                    const chat = doc.data();
-                    if (chat.unread && chat.unread[user.uid]) unreadCount++;
-                });
-                const badge = document.getElementById("chatBadge");
-                if (unreadCount > 0) {
-                    badge.innerText = unreadCount;
-                    badge.classList.remove("d-none");
-                } else {
-                    badge.classList.add("d-none");
-                }
-            });
-
-    } else {
-        // 로그아웃 상태
-        if (existingUploadBtn) existingUploadBtn.remove();
-        authArea.innerHTML = `<a href="login.html" class="btn btn-outline-primary">로그인</a>`;
-        chatArea.innerHTML = ""; // 채팅 버튼 제거
-    }
-});
 
 // 로그인 상태 확인
 auth.onAuthStateChanged(async (user) => {
     if (user) {
         currentUser = user;
+        
 
-        // 🔹 users 컬렉션에서 studentId 불러오기
         const userDoc = await db.collection("users").doc(user.uid).get();
         if (userDoc.exists) {
             currentStudentId = userDoc.data().studentId;
@@ -134,16 +40,6 @@ auth.onAuthStateChanged(async (user) => {
     }
 });
 
-// 🔹 파일을 Base64로 변환하는 함수
-function toBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result.split(',')[1]); // "data:image/..." 제거
-        reader.onerror = error => reject(error);
-    });
-}
-
 // 업로드 버튼 클릭 이벤트
 $('#send').click(async function () {
     if (!currentUser || !currentStudentId) {
@@ -151,45 +47,54 @@ $('#send').click(async function () {
         return;
     }
 
-    const file = document.getElementById("imageInput").files[0];
-    let imageUrl = null;
-
-    if (file) {
-        try {
-            const base64Image = await toBase64(file);
-
-            // 🔹 Imgbb API 업로드
-            const formData = new FormData();
-            formData.append("key", "f31394a4f6970350d3a622d30bbccf1c"); // 반드시 본인 키로 교체
-            formData.append("image", base64Image);
-
-            const res = await fetch("https://api.imgbb.com/1/upload", {
-                method: "POST",
-                body: formData
-            });
-
-            const data = await res.json();
-            if (data.success) {
-                imageUrl = data.data.url;
-            } else {
-                throw new Error("Imgbb 업로드 실패");
-            }
-        } catch (err) {
-            console.error("이미지 업로드 실패:", err);
-            alert("이미지 업로드에 실패했습니다.");
-            return;
-        }
+    const productimages = document.getElementById("product-images");
+    if (!productimages.files.length) {
+        alert("파일을 선택해주세요.");
+        return;
     }
 
-    // 🔹 Firestore에 저장할 데이터
+    const file = productimages.files[0];
+    // 파일 이름에서 한글, 특수문자 제거 (영문, 숫자, 점, 언더바, 하이픈만 허용)
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '');
+    const fileName = `${Date.now()}_${safeName}`;
+
+    // Supabase Storage 업로드 (Content-Type 명시)
+    const { data, error } = await supabaseClient.storage
+        .from("product-images")
+        .upload(fileName, file, {
+            cacheControl: '3600',
+            upsert: false,
+            contentType: file.type
+        });
+
+    if (error) {
+        console.error("업로드 실패:", error.message, error.statusCode, error);
+        alert("이미지 업로드 실패: " + error.message);
+        return;
+    }
+
+    // 업로드 후 public URL 가져오기
+    const { data: urlData, error: urlError } = supabaseClient.storage
+        .from("product-images")
+        .getPublicUrl(fileName);
+
+    if (urlError) {
+        console.error("URL 가져오기 실패:", urlError);
+        alert("이미지 URL 가져오기 실패");
+        return;
+    }
+
+    const publicUrl = urlData.publicUrl;
+
+    // Firestore에 상품 정보 저장
     const save = {
         제목: $('#title').val(),
         가격: $('#price').val(),
         내용: $('#content').val(),
+        이미지URL: publicUrl,      // 업로드한 이미지 URL 저장
         날짜: new Date(),
         작성자UID: currentUser.uid,
-        작성자학번: currentStudentId,
-        이미지: imageUrl // 이미지 URL 저장
+        작성자학번: currentStudentId
     };
 
     try {
@@ -197,6 +102,7 @@ $('#send').click(async function () {
         alert("상품이 등록되었습니다!");
         window.location.href = "index.html";
     } catch (err) {
-        console.error("업로드 실패:", err);
+        console.error("상품 등록 실패:", err);
+        alert("상품 등록 실패");
     }
 });
