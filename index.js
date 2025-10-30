@@ -135,7 +135,6 @@ function 상품렌더링(상품목록) {
                 <p class="text-muted mb-1" style="font-size:0.9rem;">${formattedDate}</p>
                 <p class="price fw-bold mb-1">${formattedPrice}</p>
                 ${data.카테고리 ? `<span class="badge text-bg-light">${data.카테고리}</span>` : ''}
-                <span class="float-end text-muted">♥0</span>
             </div>
         </div>
         `;
